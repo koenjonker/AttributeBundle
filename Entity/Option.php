@@ -3,12 +3,15 @@
 namespace Padam87\AttributeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Padam87\AttributeBundle\Model\AbstractOption;
+use Padam87\AttributeBundle\Model\OptionInterface;
+use Padam87\AttributeBundle\Model\DefinitionInterface;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="attribute_option")
+ * @ORM\MappedSuperclass
  */
-class Option
+
+class Option extends AbstractOption implements OptionInterface
 {
     /**
      * @ORM\Id
@@ -17,73 +20,17 @@ class Option
      * @var int
      */
     protected $id;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      * @var string
      */
     protected $name;
-
+    
     /**
-     * @ORM\ManyToOne(targetEntity="Definition", inversedBy="options")
+     * @ORM\ManyToOne(targetEntity="Padam87\AttributeBundle\Model\DefinitionInterface", inversedBy="options")
      * @ORM\JoinColumn(name="definition_id", referencedColumnName="id")
      * @var AttributeDefinition
      */
     protected $definition;
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param  string $name
-     * @return Option
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set definition
-     *
-     * @param  Padam87\AttributeBundle\Entity\Definition $definition
-     * @return Option
-     */
-    public function setDefinition(\Padam87\AttributeBundle\Entity\Definition $definition = null)
-    {
-        $this->definition = $definition;
-
-        return $this;
-    }
-
-    /**
-     * Get definition
-     *
-     * @return Padam87\AttributeBundle\Entity\Definition
-     */
-    public function getDefinition()
-    {
-        return $this->definition;
-    }
 }

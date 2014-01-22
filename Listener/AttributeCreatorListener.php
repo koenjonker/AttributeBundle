@@ -15,6 +15,17 @@ use Doctrine\DBAL\DBALException;
  */
 class AttributeCreatorListener
 {
+    protected $schemaClassName;
+    
+    /**
+     * @Di\InjectParams({
+     *     "schemaClassName" = @Di\Inject("%padam87.entities.schema%")
+     * })
+     */
+    public function __construct($schemaClassName) {
+        $this->schemaClassName = $schemaClassName;
+    }
+    
     public function postLoad(LifecycleEventArgs $eventArgs)
     {
         $em = $eventArgs->getEntityManager();
@@ -26,7 +37,7 @@ class AttributeCreatorListener
 
         if ($reader->getClassAnnotation($refl, 'Padam87\AttributeBundle\Annotation\Entity') != null) {
             try {
-                $schema = $em->getRepository('Padam87AttributeBundle:Schema')->findOneBy(array(
+                $schema = $em->getRepository($this->schemaClassName)->findOneBy(array(
                     'className' => $refl->getName()
                 ));
 

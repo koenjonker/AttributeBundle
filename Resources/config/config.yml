@@ -2,3 +2,12 @@ twig:
     form:
         resources:
             - 'Padam87AttributeBundle:Form:attributeCollection.html.twig'
+            
+doctrine:
+    orm:
+        resolve_target_entities:
+            Padam87\AttributeBundle\Model\DefinitionInterface:  "%padam87.entities.definition%"    
+            Padam87\AttributeBundle\Model\SchemaInterface:      "%padam87.entities.schema%"    
+            Padam87\AttributeBundle\Model\OptionInterface:      "%padam87.entities.option%"    
+            Padam87\AttributeBundle\Model\AttributeInterface:   "%padam87.entities.attribute%"    
+    
