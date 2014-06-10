@@ -21,7 +21,7 @@ class AttributeCreatorListener
     
     /**
      * @Di\InjectParams({
-     *     "schemaClassName" = @Di\Inject("%padam87.entities.schema%")
+     *     "schemaClassName" = @Di\Inject("%padam87.entities.schema%"),
      *     "attributeClassName" = @Di\Inject("%padam87.entities.attribute%")
      * })
      */
