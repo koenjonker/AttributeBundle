@@ -6,17 +6,17 @@ class AbstractAttribute
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $value;
+    protected $value;
 
     /**
      * @var Definition
      */
-    private $definition;
+    protected $definition;
 
     public function __toString()
     {
