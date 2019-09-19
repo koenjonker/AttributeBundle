@@ -1,7 +1,6 @@
 twig:
-    form:
-        resources:
-            - 'Padam87AttributeBundle:Form:attributeCollection.html.twig'
+    form_themes:
+        - 'Padam87AttributeBundle:Form:attributeCollection.html.twig'
             
 doctrine:
     orm:
